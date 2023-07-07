@@ -11,4 +11,16 @@ router.post(
   MovieController.addMovie
 );
 
+router.get(
+  "/:id",
+  auth([ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.USER]),
+  MovieController.getSingleMovie
+);
+
+router.get(
+  "/",
+  auth([ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.USER]),
+  MovieController.getAllMovies
+);
+
 export const MovieRoutes = router;

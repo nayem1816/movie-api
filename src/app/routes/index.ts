@@ -10,7 +10,7 @@ const routes = [
     route: AuthRoutes,
   },
   {
-    path: "/movie",
+    path: "/movies",
     route: MovieRoutes,
   },
 ];
