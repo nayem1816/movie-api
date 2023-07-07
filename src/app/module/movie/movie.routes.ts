@@ -10,6 +10,11 @@ router.post(
   auth([ENUM_USER_ROLE.ADMIN]),
   MovieController.addMovie
 );
+// router.post(
+//   "/add-multiple-movie",
+//   auth([ENUM_USER_ROLE.ADMIN]),
+//   MovieController.addMultipleMovies
+// );
 
 router.get(
   "/:id",
