@@ -16,7 +16,8 @@ const MovieSchema = new Schema<IMovie, Record<string, unknown>>(
       required: true,
     },
     director: {
-      type: String,
+      type: Schema.Types.ObjectId,
+      ref: "Director",
       required: true,
     },
     producer: {
