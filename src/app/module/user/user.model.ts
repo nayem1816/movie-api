@@ -1,10 +1,10 @@
 import { Schema, model } from "mongoose";
-import { IUser, UserModel } from "./user.interface";
+import { IUser, IUserModel, UserModel } from "./user.interface";
 import { role } from "./user.constant";
 import config from "../../../config";
 import bcrypt from "bcrypt";
 
-const UserSchema = new Schema<IUser, Record<string, unknown>>(
+const UserSchema = new Schema<IUser, Record<string, unknown>, IUserModel>(
   {
     role: {
       type: String,
@@ -30,6 +30,15 @@ const UserSchema = new Schema<IUser, Record<string, unknown>>(
     timestamps: true,
   }
 );
+
+UserSchema.methods.isPasswordMatch = async function (
+  givenPassword: string,
+  hashPassword: string
+): Promise<boolean> {
+  const isMatch = await bcrypt.compare(givenPassword, hashPassword);
+
+  return isMatch;
+};
 
 UserSchema.pre("save", async function (next) {
   const hashPassword = await bcrypt.hash(
