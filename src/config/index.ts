@@ -8,5 +8,12 @@ dotenv.config({
 export default {
   env: process.env.NODE_ENV,
   port: process.env.PORT,
-  database_url: process.env.DATABASE_URL
+  database_url: process.env.DATABASE_URL,
+  bcrypt_salt_rounds: process.env.BCRYPT_SALT_ROUNDS,
+  jwt: {
+    jwt_access_token_secret_key: process.env.JWT_ACCESS_TOKEN_SECRET_KEY,
+    jwt_access_token_expire_in: process.env.JWT_ACCESS_TOKEN_EXPIRE_IN,
+    jwt_refresh_token_secret_key: process.env.JWT_REFRESH_TOKEN_SECRET_KEY,
+    jwt_refresh_token_expire_in: process.env.JWT_REFRESH_TOKEN_EXPIRE_IN,
+  },
 };
