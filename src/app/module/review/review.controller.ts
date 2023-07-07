@@ -26,6 +26,26 @@ const addReview = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
+const getAllReviews = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const result = await ReviewService.getAllReviews();
+
+    sendResponse<IReview[]>(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: "Movies retrieved successfully.",
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const ReviewController = {
   addReview,
+  getAllReviews,
 };

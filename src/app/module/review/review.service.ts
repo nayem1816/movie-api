@@ -13,6 +13,13 @@ const addReview = async (
   return result;
 };
 
+const getAllReviews = async (): Promise<IReview[]> => {
+  const result = await Review.find({}).populate("user").populate("movie");
+
+  return result;
+};
+
 export const ReviewService = {
   addReview,
+  getAllReviews,
 };

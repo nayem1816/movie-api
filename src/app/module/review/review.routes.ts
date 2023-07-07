@@ -10,4 +10,10 @@ router.post(
   auth([ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.USER]),
   ReviewController.addReview
 );
+
+router.get(
+  "/",
+  auth([ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.USER]),
+  ReviewController.getAllReviews
+);
 export const ReviewRoutes = router;
